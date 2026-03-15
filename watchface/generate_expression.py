@@ -42,6 +42,7 @@ def get_timezone_at_11am(hour_offset: int) -> str:
 
     available_tzs = list(zoneinfo.available_timezones())
     random.shuffle(available_tzs)
+    available_tzs.sort(key=lambda x: 1 if "Etc/" in x else 0)
 
     if tz := check(available_tzs, dt_search, needed_offset, True):
         return tz
@@ -53,12 +54,13 @@ def get_timezone_at_11am(hour_offset: int) -> str:
 
 if __name__ == "__main__":
     start_hours = 490_885 # 1 January 2026
-    end_hours = start_hours + (10 * 8_765) # 10 years later
+    end_hours = start_hours + (2**17) # 10 years later
 
-    f = open("expression.txt", "w")
+    f = open("expression.csv", "w")
     f.write("")
     for i in range(start_hours, end_hours):
         tz = get_timezone_at_11am(i)
-        f.write(f"[HOURS_SINCE_EPOCH] == {i} ? &quot;{tz}&quot; : ")
-    f.write("&quot;???&quot;")
+        f.write(f"{i}\t{tz}\n")
+        # f.write(f"[HOURS_SINCE_EPOCH] == {i} ? &quot;{tz}&quot; : ")
+    # f.write("&quot;???&quot;")
     f.close()
