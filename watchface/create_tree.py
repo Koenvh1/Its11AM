@@ -20,6 +20,6 @@ def do(lo, hi):
     right = do(mid + 1, hi)
     return f"([HOURS_SINCE_EPOCH] &lt;= {mid} ? {left} : {right})"
 
-expression = do(490885, 621956)
+expression = do(490885, 490885+8765)#621956)
 expression = f"<Parameter expression=\"{expression}\" />"
 open("expression_tree.txt", "w").write(expression)
