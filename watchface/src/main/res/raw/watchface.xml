@@ -79,7 +79,7 @@
             y="0">
             <Variant
                 target="alpha"
-                value="255"
+                value="128"
                 mode="AMBIENT" />
             <PartText
                 x="0"
@@ -91,7 +91,7 @@
                     <Font
                         color="#ffffffff"
                         family="SYNC_TO_DEVICE"
-                        weight="BLACK"
+                        weight="NORMAL"
                         size="128">
                         <Template><![CDATA[11:%s]]>
                             <Parameter expression="[MINUTE_Z]" />
